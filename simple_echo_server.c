@@ -9,7 +9,7 @@
 #include <string.h>
 #include  <signal.h>
 
-#define PORT 9002
+#define PORT 9005
 #define BACKLOG 1
 #define STOP_WORLD "stop"
 
@@ -180,7 +180,8 @@ RETURN VALUE
 	    printf("Waiting for data...\n");
 	    memset(buf,0,sizeof(buf));
             bytes_read = recv(sock, buf, 1024, 0);
-            if(bytes_read == -1) break;
+	    printf("bytes_read %d \n",bytes_read);
+            if(bytes_read == -1 || bytes_read == 0) break;
 	    if (strcmp (buf, STOP_WORLD)==0){
 		printf("Recived stop world...exit\n");
 		close(sock);
@@ -188,10 +189,12 @@ RETURN VALUE
 	    }
 	    printf("Recived data is : %s\n", buf);
             send(sock, buf, bytes_read, 0);
+	//break;//debug
+
         }
     
-        close(sock);
+        //break;//debug
     }
-    
+    close(sock);
     return 0;
 }
