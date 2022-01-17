@@ -9,6 +9,7 @@
 #include <unistd.h>
 
 int main(int argc, char *argv[]){
+	printf("Client(*)(*)\n");
 	if (argc!=7){
 	printf("Incorrect number of arguments\n");
 	exit(EXIT_FAILURE);

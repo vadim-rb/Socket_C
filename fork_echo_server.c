@@ -99,12 +99,12 @@ int main(int argc, char *argv[])
 	  case -1: 
 		perror("Error while fork: ");
 	        exit(EXIT_FAILURE);//при вызове fork() возникла ошибка
-	  case 0 : 
+	  case 0 : // код потомка
 		close(server_socket);
 		process_request(sock);
 		close(sock);
 		exit(0);
-	  default : 
+	  default : //код родительского процесса
 		close(sock);
 	}
     }
