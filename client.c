@@ -19,6 +19,7 @@ int main(int argc, char *argv[]){
 	 || strcmp(argv[5], "-d") != 0){
 	printf("Incorrect keys\n");
 	printf("%s %s %s \n",argv[1],argv[3],argv[5]);
+	exit(EXIT_FAILURE);
 	}
 	char *ip = argv[2];
 	char *port = argv[4];
